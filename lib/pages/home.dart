@@ -46,17 +46,36 @@ class Homepage extends StatelessWidget {
   }
 
   Widget _placesDropdownWidget() {
-    List<DropdownMenuItem<String>> _items = [
+    List<String> _items = [
       'Manjeri',
       'Kondotty',
-    ].map((e) {
-      return DropdownMenuItem(
-        child: Text(e),
-        value: e,
-      );
-    }).toList();
+    ];
     return Container(
-      child: DropdownButton(items: _items, onChanged: (_) {}),
+      width: _deviceWidth,
+      decoration: BoxDecoration(
+          color: Color.fromRGBO(51, 51, 51, 1.0),
+          borderRadius: BorderRadius.circular(10)),
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: DropdownButton(
+        hint: const Align(
+          alignment: Alignment.centerRight,
+          child: Text(
+            "Select Place",
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.grey),
+          ),
+        ),
+        onChanged: (_) {},
+        items: _items.map((e) {
+          return DropdownMenuItem(
+            value: e,
+            child: Text(e),
+          );
+        }).toList(),
+        underline: Container(),
+        dropdownColor: const Color.fromRGBO(53, 53, 53, 1.0),
+        style: TextStyle(color: Colors.white10),
+      ),
     );
   }
 }
